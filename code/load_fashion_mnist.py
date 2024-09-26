@@ -4,8 +4,6 @@ import torchvision.transforms as transforms
 import torch.nn as nn 
 import torch.nn.functional as F 
 
-import utils
-
 from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
