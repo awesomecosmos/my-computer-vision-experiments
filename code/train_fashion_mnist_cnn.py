@@ -33,6 +33,9 @@ my_params = {
     'optimizer':'sgd'
 }
 
+device = torch.device("cuda")
+print(f"Using {device} device")
+
 transform = transforms.Compose(
     [transforms.ToTensor(),
     # transforms.Normalize((1,), (1,))
