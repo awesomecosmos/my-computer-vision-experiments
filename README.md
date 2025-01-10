@@ -1,4 +1,4 @@
-# MNIST-Experiments
+# My-Computer-Vision-Experiments
 
 This repository is a sandbox for me to learn more about machine learning/deep learning/image processing techniques using the [MNIST](https://paperswithcode.com/dataset/mnist) dataset.
 
