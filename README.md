@@ -4,10 +4,8 @@ This repository is a sandbox for me to learn more about machine learning/deep le
 
 ## Datasets Used
 
-**[MNIST](https://paperswithcode.com/dataset/mnist)**
-- https://paperswithcode.com/dataset/mnist
-- https://www.tensorflow.org/datasets/catalog/mnist
+- [MNIST](https://paperswithcode.com/dataset/mnist)
+- [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist)
 
-**[Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist)**
-- https://www.kaggle.com/datasets/zalando-research/fashionmnist
-- https://paperswithcode.com/paper/fashion-mnist-a-novel-image-dataset-for
+## Experiments Run
+- `pretrained_models.py` - to play around with transfer learning using pre-trained models from PyTorch.
