@@ -160,15 +160,7 @@ hyperparameters = {
 }
 logger.info("Hyperparameters:")
 logger.info(json.dumps(hyperparameters, indent=4))  # Pretty-print dictionary
-run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
-
-# Log script end time
-end_time = time.time()                                                                              
-end_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-elapsed_time = end_time - start_time
-logger.info(f"Script ended at: {end_timestamp}")
-logger.info(f"Total execution time: {elapsed_time:.2f} seconds")
-logger.info("=" * 50)
+model = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
 
 
 def visualize_feature_maps(model, image, layer_name="layer1"):
@@ -196,6 +188,7 @@ def visualize_feature_maps(model, image, layer_name="layer1"):
         ax.imshow(activation[0, i].cpu().numpy(), cmap="viridis")
         ax.axis("off")
     plt.suptitle(f"Feature Maps from {layer_name}")
+    plt.savefig(f"../figs/pretrained_experiments/fm_{layer_name}.jpg",dpi=300)
     plt.show()
 
 # Pick a random test image
@@ -221,8 +214,17 @@ def plot_confusion_matrix(model, test_loader, class_names):
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
     plt.title("Confusion Matrix")
+    plt.savefig("../figs/pretrained_experiments/cm.jpg",dpi=300)
     plt.show()
 
 # Call the function
 class_names = train_dataset.classes  # Fashion-MNIST class labels
 plot_confusion_matrix(model, test_loader, class_names)
+
+# Log script end time
+end_time = time.time()                                                                              
+end_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+elapsed_time = end_time - start_time
+logger.info(f"Script ended at: {end_timestamp}")
+logger.info(f"Total execution time: {elapsed_time:.2f} seconds")
+logger.info("=" * 50)

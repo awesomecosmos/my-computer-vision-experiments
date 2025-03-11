@@ -98,3 +98,50 @@
     "lr": 0.001
 }
 2025-03-11 06:44:57 - Training model: (ResNet50, pretrained=True)
+2025-03-11 06:47:05 - Epoch 1/1, Loss: 0.7145, Accuracy: 0.7532
+2025-03-11 06:47:25 - Test Accuracy: 80.55%
+2025-03-11 06:47:25 - Script ended at: 2025-03-11 06:47:25
+2025-03-11 06:47:25 - Total execution time: 148.31 seconds
+2025-03-11 06:47:25 - ==================================================
+2025-03-11 06:47:53 - ==================================================
+2025-03-11 06:47:53 - Running script: pretrained_models.py
+2025-03-11 06:47:53 - Script started at: 2025-03-11 06:47:53
+2025-03-11 06:47:53 - Using device: cuda
+2025-03-11 06:47:53 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 06:47:54 - Starting new experiment!
+2025-03-11 06:47:54 - Hyperparameters:
+2025-03-11 06:47:54 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 06:47:54 - Training model: (ResNet50, pretrained=True)
+2025-03-11 06:50:03 - Epoch 1/1, Loss: 0.7073, Accuracy: 0.7567
+2025-03-11 06:50:22 - Test Accuracy: 79.46%
+2025-03-11 06:50:22 - Script ended at: 2025-03-11 06:50:22
+2025-03-11 06:50:22 - Total execution time: 148.87 seconds
+2025-03-11 06:50:22 - ==================================================
+2025-03-11 06:52:36 - ==================================================
+2025-03-11 06:52:36 - Running script: pretrained_models.py
+2025-03-11 06:52:36 - Script started at: 2025-03-11 06:52:36
+2025-03-11 06:52:36 - Using device: cuda
+2025-03-11 06:52:36 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 06:52:36 - Starting new experiment!
+2025-03-11 06:52:36 - Hyperparameters:
+2025-03-11 06:52:36 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 06:52:36 - Training model: (ResNet50, pretrained=True)
+2025-03-11 06:54:45 - Epoch 1/1, Loss: 0.7140, Accuracy: 0.7552
+2025-03-11 06:55:05 - Test Accuracy: 80.30%
+2025-03-11 06:55:25 - Script ended at: 2025-03-11 06:55:25
+2025-03-11 06:55:25 - Total execution time: 169.02 seconds
+2025-03-11 06:55:25 - ==================================================
