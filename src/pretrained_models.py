@@ -58,7 +58,7 @@ def train_model(model, train_loader, criterion, hyperparameters):
     
     utils.plot_loss_accuracy_curves(
         losses, accuracies, 
-        saveTag=f"{hyperparameters['model_name']}-pretrained-{hyperparameters['pretrained_model']})", 
+        saveTag=f"train_{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}", 
         figSaveDir=f"../figs/pretrained_experiments/"
         )
 
@@ -75,18 +75,23 @@ def test_model(model, test_loader):
             correct += (predicted == labels).sum().item()
 
     logger.info(f"Test Accuracy: {100 * correct / total:.2f}%")
-
+    # add cm
+    
 def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
     if hyperparameters['model_name'] == 'ResNet50':
-        model = resnet50(pretrained=hyperparameters['pretrained_model'])
+        if hyperparameters['pretrained_model'] is True:
+            model = resnet50(weights='DEFAULT')
+        else:   
+            model = resnet50(weights=None)
     
-    if hyperparameters['pretrained_model']:
-        # Freeze all layers except the final classifier
-        for param in model.parameters():
-            param.requires_grad = False  # Freeze convolutional layers
-
     # Modify the final fully connected layer for 10 classes
     model.fc = nn.Linear(model.fc.in_features, 10)  
+
+    # Freeze all layers except the final classifier
+    for param in model.parameters():
+        param.requires_grad = False  # Freeze convolutional layers
+    for param in model.fc.parameters():
+        param.requires_grad = True  # Unfreeze final layer
 
     model.to(device)
     criterion = nn.CrossEntropyLoss()
@@ -141,7 +146,7 @@ for model in lst_of_models:
     for flag in pretrained:
         logger.info("Starting new experiment!")   
         hyperparameters = {
-            'model_name':model,
+            'model_name':str(model),
             'pretrained_model':flag,
             'batchSize':64,
             'n_epochs':1,

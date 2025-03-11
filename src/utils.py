@@ -208,7 +208,7 @@ def plot_confusion_matrix(model, device, test_loader, class_names, figSaveTag, f
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=class_names, yticklabels=class_names)
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
-    plt.title("Confusion Matrix")
+    plt.title(f"Confusion Matrix: {figSaveTag}")
     plt.savefig(f"{figSaveDir}/cm_{figSaveTag}.jpg",dpi=300)
     plt.show()
 
@@ -236,6 +236,6 @@ def visualize_feature_maps(model, device, image, figSaveTag, figSaveDir, layer_n
         if i >= activation.shape[1]: break  # Stop if fewer channels
         ax.imshow(activation[0, i].cpu().numpy(), cmap="viridis")
         ax.axis("off")
-    plt.suptitle(f"Feature Maps from {layer_name}")
+    plt.suptitle(f"Feature Maps from {layer_name}: {figSaveTag}")
     plt.savefig(f"{figSaveDir}/fm_{layer_name}_{figSaveTag}.jpg",dpi=300)
     plt.show()
