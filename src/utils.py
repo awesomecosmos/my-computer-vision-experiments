@@ -71,27 +71,32 @@ def choose_optimizer(model, optimizer_choice, learning_rate=0.01, momentum=None)
         optimizer = torch.optim.Adam(model.parameters(), learning_rate)
     return optimizer
 
-def plot_loss_accuracy_curves(losses, accuracies, epoch_num):
+def plot_loss_accuracy_curves(losses, accuracies, saveTag, figSaveDir):
     """Function to plot loss-accuracy curve.
 
     Args:
         losses (list): List of losses.
         accuracies (list): List of accuracies.
-        epoch_num (int): Epoch number, for plot title.
+        saveTag (str): Used in title and savename of plot.
+        figSaveDir (str): Directory to save figure in.
     """
     plt.figure(figsize=(12, 4))
-    # plotting loss vs epoch
+    plt.suptitle(saveTag, fontsize=14, fontweight='bold')
+    # Plot loss vs epoch
     plt.subplot(1, 2, 1)
     plt.plot(losses)
-    plt.title(f'Epoch {epoch_num}: Loss Curve')
-    plt.xlabel('Batch')
+    plt.title(f'Epoch vs Loss (avg={np.round(np.mean(losses),4)})')
+    plt.xlabel('Epoch')
     plt.ylabel('Loss')
-    # plotting accuracy vs epoch
+    # Plot accuracy vs epoch
     plt.subplot(1, 2, 2)
     plt.plot(accuracies)
-    plt.title(f'Epoch {epoch_num}: Accuracy Curve (avg={np.round(np.mean(accuracies),2)}%)')
-    plt.xlabel('Batch')
+    plt.title(f'Epoch vs Accuracy (avg={np.round(np.mean(accuracies),2)}%)')
+    plt.xlabel('Epoch')
     plt.ylabel('Accuracy (%)')
+    # Adjust layout
+    plt.tight_layout(rect=[0, 0, 1, 0.95])  # Adjust for suptitle
+    plt.savefig(f'{figSaveDir}/loss_acc_{saveTag}.jpg', dpi=300)
     plt.show()
 
 
