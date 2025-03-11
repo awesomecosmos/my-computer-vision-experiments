@@ -145,3 +145,135 @@
 2025-03-11 06:55:25 - Script ended at: 2025-03-11 06:55:25
 2025-03-11 06:55:25 - Total execution time: 169.02 seconds
 2025-03-11 06:55:25 - ==================================================
+2025-03-11 08:49:16 - ==================================================
+2025-03-11 08:49:16 - Running script: pretrained_models.py
+2025-03-11 08:49:16 - Script started at: 2025-03-11 08:49:16
+2025-03-11 08:49:16 - Using device: cuda
+2025-03-11 08:49:16 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 08:49:16 - Starting new experiment!
+2025-03-11 08:49:16 - Hyperparameters:
+2025-03-11 08:49:16 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 08:49:17 - Training model: (ResNet50, pretrained=False)
+2025-03-11 08:54:02 - Epoch 1/1, Loss: 2.4798, Accuracy: 0.1989
+2025-03-11 08:54:21 - Test Accuracy: 35.11%
+2025-03-11 08:55:16 - ==================================================
+2025-03-11 08:55:16 - Running script: pretrained_models.py
+2025-03-11 08:55:16 - Script started at: 2025-03-11 08:55:16
+2025-03-11 08:55:16 - Using device: cuda
+2025-03-11 08:55:16 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 08:55:16 - Starting new experiment!
+2025-03-11 08:55:16 - Hyperparameters:
+2025-03-11 08:55:16 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 08:55:17 - Training model: (ResNet50, pretrained=False)
+2025-03-11 09:00:02 - Epoch 1/1, Loss: 2.4587, Accuracy: 0.2043
+2025-03-11 09:00:21 - Test Accuracy: 19.82%
+2025-03-11 09:05:03 - ==================================================
+2025-03-11 09:05:03 - Running script: pretrained_models.py
+2025-03-11 09:05:03 - Script started at: 2025-03-11 09:05:03
+2025-03-11 09:05:03 - Using device: cuda
+2025-03-11 09:05:03 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 09:05:03 - Starting new experiment!
+2025-03-11 09:05:03 - Hyperparameters:
+2025-03-11 09:05:03 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 09:05:04 - Training model: (ResNet50, pretrained=False)
+2025-03-11 09:09:48 - Epoch 1/1, Loss: 2.4316, Accuracy: 21.4300%
+2025-03-11 09:10:07 - Test Accuracy: 29.45%
+2025-03-11 09:10:26 - Starting new experiment!
+2025-03-11 09:10:26 - Hyperparameters:
+2025-03-11 09:14:49 - ==================================================
+2025-03-11 09:14:49 - Running script: pretrained_models.py
+2025-03-11 09:14:49 - Script started at: 2025-03-11 09:14:49
+2025-03-11 09:14:49 - Using device: cuda
+2025-03-11 09:14:49 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 09:14:49 - Starting new experiment!
+2025-03-11 09:14:49 - Hyperparameters:
+2025-03-11 09:14:49 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 09:14:49 - Training model: (ResNet50, pretrained=False)
+2025-03-11 09:19:33 - Epoch 1/1, Loss: 2.4628, Accuracy: 20.2367%
+2025-03-11 09:19:53 - Test Accuracy: 19.21%
+2025-03-11 09:20:12 - Starting new experiment!
+2025-03-11 09:20:12 - Hyperparameters:
+2025-03-11 09:32:13 - ==================================================
+2025-03-11 09:32:13 - Running script: pretrained_models.py
+2025-03-11 09:32:13 - Script started at: 2025-03-11 09:32:13
+2025-03-11 09:32:13 - Using device: cuda
+2025-03-11 09:32:13 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 09:32:13 - Starting new experiment!
+2025-03-11 09:32:13 - Hyperparameters:
+2025-03-11 09:32:13 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 09:32:13 - Training model: (ResNet50, pretrained=False)
+2025-03-11 09:36:58 - Epoch 1/1, Loss: 2.4541, Accuracy: 20.6283%
+2025-03-11 09:37:18 - Test Accuracy: 37.67%
+2025-03-11 09:43:31 - ==================================================
+2025-03-11 09:43:31 - Running script: pretrained_models.py
+2025-03-11 09:43:31 - Script started at: 2025-03-11 09:43:31
+2025-03-11 09:43:31 - Using device: cuda
+2025-03-11 09:43:31 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 09:43:31 - Starting new experiment!
+2025-03-11 09:43:31 - Hyperparameters:
+2025-03-11 09:43:31 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 09:43:32 - Training model: (ResNet50, pretrained=False)
+2025-03-11 09:48:16 - Epoch 1/1, Loss: 2.4595, Accuracy: 20.9567%
+2025-03-11 09:48:35 - Test Accuracy: 23.08%
+2025-03-11 09:55:30 - ==================================================
+2025-03-11 09:55:30 - Running script: pretrained_models.py
+2025-03-11 09:55:30 - Script started at: 2025-03-11 09:55:30
+2025-03-11 09:55:30 - Using device: cuda
+2025-03-11 09:55:30 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-11 09:55:30 - Starting new experiment!
+2025-03-11 09:55:30 - Hyperparameters:
+2025-03-11 09:55:30 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-11 09:55:30 - Training model: (ResNet50, pretrained=False)
+2025-03-11 10:00:14 - Epoch 1/1, Loss: 2.4272, Accuracy: 20.6900%
+2025-03-11 10:00:33 - Test Accuracy: 28.40%
+2025-03-11 10:00:53 - Starting new experiment!
+2025-03-11 10:00:53 - Hyperparameters:

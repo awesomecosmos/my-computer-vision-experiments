@@ -1,9 +1,20 @@
+import torch
+import torchvision
+import torchvision.transforms as transforms
+import torch.nn as nn
+import torch.optim as optim
+from torchvision.models import resnet18, resnet50
+from torch.utils.data import DataLoader
+import time
+import os
+import json
+import sys
+from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
-import torch
-import torch.nn as nn 
-import torch.nn.functional as F 
-import logging, sys
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+import logging
 
 # Helper function for inline image display
 def matplotlib_imshow(img, one_channel=False):
@@ -177,3 +188,54 @@ def setup_logger(log_filename="logfile.txt"):
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def plot_confusion_matrix(model, device, test_loader, class_names, figSaveTag, figSaveDir):
+    model.eval()
+    all_preds = []
+    all_labels = []
+
+    with torch.no_grad():
+        for images, labels in test_loader:
+            images, labels = images.to(device), labels.to(device)
+            outputs = model(images)
+            _, predicted = torch.max(outputs, 1)
+            all_preds.extend(predicted.cpu().numpy())
+            all_labels.extend(labels.cpu().numpy())
+
+    cm = confusion_matrix(all_labels, all_preds)
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=class_names, yticklabels=class_names)
+    plt.xlabel("Predicted")
+    plt.ylabel("Actual")
+    plt.title("Confusion Matrix")
+    plt.savefig(f"{figSaveDir}/cm_{figSaveTag}.jpg",dpi=300)
+    plt.show()
+
+def visualize_feature_maps(model, device, image, figSaveTag, figSaveDir, layer_name="layer1"):
+    model.eval()
+    activation = None
+
+    def hook_fn(module, input, output):
+        nonlocal activation
+        activation = output.detach()
+
+    # Register hook on chosen layer
+    layer = dict(model.named_modules())[layer_name]
+    hook = layer.register_forward_hook(hook_fn)
+
+    # Process a single image
+    image = image.unsqueeze(0).to(device)  # Add batch dimension
+    _ = model(image)  # Forward pass to trigger hook
+
+    hook.remove()
+
+    # Plot feature maps
+    fig, axes = plt.subplots(4, 4, figsize=(8, 8))  # Show first 16 feature maps
+    for i, ax in enumerate(axes.flat):
+        if i >= activation.shape[1]: break  # Stop if fewer channels
+        ax.imshow(activation[0, i].cpu().numpy(), cmap="viridis")
+        ax.axis("off")
+    plt.suptitle(f"Feature Maps from {layer_name}")
+    plt.savefig(f"{figSaveDir}/fm_{layer_name}_{figSaveTag}.jpg",dpi=300)
+    plt.show()

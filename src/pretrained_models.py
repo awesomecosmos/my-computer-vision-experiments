@@ -54,7 +54,7 @@ def train_model(model, train_loader, criterion, hyperparameters):
         losses.append(epoch_loss)
         accuracies.append(epoch_accuracy)
 
-        logger.info(f"Epoch {epoch+1}/{hyperparameters['n_epochs']}, Loss: {epoch_loss:.4f}, Accuracy: {epoch_accuracy:.4f}")
+        logger.info(f"Epoch {epoch+1}/{hyperparameters['n_epochs']}, Loss: {epoch_loss:.4f}, Accuracy: {100*epoch_accuracy:.4f}%")
     
     utils.plot_loss_accuracy_curves(
         losses, accuracies, 
@@ -133,93 +133,30 @@ test_dataset = torchvision.datasets.FashionMNIST(root='../data/', train=False, t
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 
+# setting experiment hyperparameters
+lst_of_models = ['ResNet50']
+pretrained = [False, True]
 
-# logger.info("Starting new experiment!")
-# # setting hyperparameters
-# hyperparameters = {
-#     'model_name':'ResNet50',
-#     'pretrained_model':False,
-#     'batchSize':64,
-#     'n_epochs':1,
-#     'optimizer':'Adam',
-#     'lr':0.001
-# }
-# logger.info("Hyperparameters:")
-# logger.info(json.dumps(hyperparameters, indent=4))  # Pretty-print dictionary
-# model = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
+for model in lst_of_models:
+    for flag in pretrained:
+        logger.info("Starting new experiment!")   
+        hyperparameters = {
+            'model_name':model,
+            'pretrained_model':flag,
+            'batchSize':64,
+            'n_epochs':1,
+            'optimizer':'Adam',
+            'lr':0.001
+        }
+        logger.info("Hyperparameters:")
+        logger.info(json.dumps(hyperparameters, indent=4))  # Pretty-print dictionary
+        model = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
 
-logger.info("Starting new experiment!")
-# setting hyperparameters
-hyperparameters = {
-    'model_name':'ResNet50',
-    'pretrained_model':True,
-    'batchSize':64,
-    'n_epochs':1,
-    'optimizer':'Adam',
-    'lr':0.001
-}
-logger.info("Hyperparameters:")
-logger.info(json.dumps(hyperparameters, indent=4))  # Pretty-print dictionary
-model = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
-
-
-def visualize_feature_maps(model, image, layer_name="layer1"):
-    model.eval()
-    activation = None
-
-    def hook_fn(module, input, output):
-        nonlocal activation
-        activation = output.detach()
-
-    # Register hook on chosen layer
-    layer = dict(model.named_modules())[layer_name]
-    hook = layer.register_forward_hook(hook_fn)
-
-    # Process a single image
-    image = image.unsqueeze(0).to(device)  # Add batch dimension
-    _ = model(image)  # Forward pass to trigger hook
-
-    hook.remove()
-
-    # Plot feature maps
-    fig, axes = plt.subplots(4, 4, figsize=(8, 8))  # Show first 16 feature maps
-    for i, ax in enumerate(axes.flat):
-        if i >= activation.shape[1]: break  # Stop if fewer channels
-        ax.imshow(activation[0, i].cpu().numpy(), cmap="viridis")
-        ax.axis("off")
-    plt.suptitle(f"Feature Maps from {layer_name}")
-    plt.savefig(f"../figs/pretrained_experiments/fm_{layer_name}.jpg",dpi=300)
-    plt.show()
-
-# Pick a random test image
-sample_image, _ = test_dataset[0]  # Get the first test image
-visualize_feature_maps(model, sample_image, "layer1")  # Change "layer1" to "layer2", "layer3" for deeper layers
-
-def plot_confusion_matrix(model, test_loader, class_names):
-    model.eval()
-    all_preds = []
-    all_labels = []
-
-    with torch.no_grad():
-        for images, labels in test_loader:
-            images, labels = images.to(device), labels.to(device)
-            outputs = model(images)
-            _, predicted = torch.max(outputs, 1)
-            all_preds.extend(predicted.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
-
-    cm = confusion_matrix(all_labels, all_preds)
-    plt.figure(figsize=(8, 6))
-    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=class_names, yticklabels=class_names)
-    plt.xlabel("Predicted")
-    plt.ylabel("Actual")
-    plt.title("Confusion Matrix")
-    plt.savefig("../figs/pretrained_experiments/cm.jpg",dpi=300)
-    plt.show()
-
-# Call the function
-class_names = train_dataset.classes  # Fashion-MNIST class labels
-plot_confusion_matrix(model, test_loader, class_names)
+        # plotting
+        sample_image, _ = test_dataset[1]  # Get the first test image
+        figSaveTag = f'{hyperparameters['model_name']}-pretrained{hyperparameters['pretrained_model']}'
+        utils.visualize_feature_maps(model, device, sample_image, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments", layer_name="layer1")  # Change "layer1" to "layer2", "layer3" for deeper layers
+        utils.plot_confusion_matrix(model, device, test_loader, class_names=train_dataset.classes, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments")
 
 # Log script end time
 end_time = time.time()                                                                              
