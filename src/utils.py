@@ -3,6 +3,7 @@ import numpy as np
 import torch
 import torch.nn as nn 
 import torch.nn.functional as F 
+import logging, sys
 
 # Helper function for inline image display
 def matplotlib_imshow(img, one_channel=False):
@@ -146,3 +147,28 @@ class MyFashionClassifier(nn.Module):
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
         return x
+    
+
+def setup_logger(log_filename="logfile.txt"):
+    # Create logger
+    logger = logging.getLogger("CustomLogger")
+    logger.setLevel(logging.INFO)
+
+    # Create file handler (append mode)
+    file_handler = logging.FileHandler(log_filename, mode='a')
+    file_handler.setLevel(logging.INFO)
+
+    # Create stream handler (console output)
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setLevel(logging.INFO)
+
+    # Define log format
+    formatter = logging.Formatter('%(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+    file_handler.setFormatter(formatter)
+    stream_handler.setFormatter(formatter)
+
+    # Add handlers
+    logger.addHandler(file_handler)
+    logger.addHandler(stream_handler)
+
+    return logger
