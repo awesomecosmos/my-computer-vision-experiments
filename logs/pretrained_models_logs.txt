@@ -471,3 +471,55 @@
 2025-03-15 11:44:11 - Script ended at: 2025-03-15 11:44:11
 2025-03-15 11:44:11 - Total execution time: 225.08 seconds
 2025-03-15 11:44:11 - ==================================================
+2025-03-15 11:53:17 - ==================================================
+2025-03-15 11:53:17 - Running script: pretrained_models.py
+2025-03-15 11:53:17 - Script started at: 2025-03-15 11:53:17
+2025-03-15 11:53:17 - Using device: cuda
+2025-03-15 11:53:17 - CUDA Device Total Memory [GB]:50.936283136
+2025-03-15 11:53:17 - Starting new experiment!
+2025-03-15 11:53:17 - Hyperparameters:
+2025-03-15 11:53:17 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "batchSize": 64,
+    "n_epochs": 10,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-15 11:53:17 - Training model: (ResNet50, pretrained=False)
+2025-03-15 11:54:50 - Epoch 1/10, Loss: 2.4472, Accuracy: 20.7367%
+2025-03-15 11:56:21 - Epoch 2/10, Loss: 1.9985, Accuracy: 31.6283%
+2025-03-15 11:57:53 - Epoch 3/10, Loss: 1.8073, Accuracy: 36.7300%
+2025-03-15 11:59:25 - Epoch 4/10, Loss: 1.6889, Accuracy: 40.7200%
+2025-03-15 12:00:56 - Epoch 5/10, Loss: 1.5929, Accuracy: 43.1583%
+2025-03-15 12:02:26 - Epoch 6/10, Loss: 1.5377, Accuracy: 44.6967%
+2025-03-15 12:03:57 - Epoch 7/10, Loss: 1.4809, Accuracy: 46.8700%
+2025-03-15 12:05:30 - Epoch 8/10, Loss: 1.4534, Accuracy: 47.3667%
+2025-03-15 12:07:02 - Epoch 9/10, Loss: 1.4315, Accuracy: 48.4133%
+2025-03-15 12:08:35 - Epoch 10/10, Loss: 1.4021, Accuracy: 49.4283%
+2025-03-15 12:08:49 - Test Accuracy: 54.65%
+2025-03-15 12:09:03 - Starting new experiment!
+2025-03-15 12:09:03 - Hyperparameters:
+2025-03-15 12:09:03 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "batchSize": 64,
+    "n_epochs": 10,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-15 12:09:03 - Training model: (ResNet50, pretrained=True)
+2025-03-15 12:10:20 - Epoch 1/10, Loss: 0.7218, Accuracy: 76.9233%
+2025-03-15 12:11:36 - Epoch 2/10, Loss: 0.5012, Accuracy: 82.4867%
+2025-03-15 12:12:52 - Epoch 3/10, Loss: 0.4733, Accuracy: 83.7983%
+2025-03-15 12:14:08 - Epoch 4/10, Loss: 0.4617, Accuracy: 84.3433%
+2025-03-15 12:15:24 - Epoch 5/10, Loss: 0.4552, Accuracy: 84.7483%
+2025-03-15 12:16:41 - Epoch 6/10, Loss: 0.4554, Accuracy: 85.2300%
+2025-03-15 12:17:58 - Epoch 7/10, Loss: 0.4574, Accuracy: 85.2167%
+2025-03-15 12:19:15 - Epoch 8/10, Loss: 0.4579, Accuracy: 85.6900%
+2025-03-15 12:20:31 - Epoch 9/10, Loss: 0.4568, Accuracy: 85.6533%
+2025-03-15 12:21:48 - Epoch 10/10, Loss: 0.4596, Accuracy: 85.9800%
+2025-03-15 12:22:00 - Test Accuracy: 84.61%
+2025-03-15 12:22:13 - Script ended at: 2025-03-15 12:22:13
+2025-03-15 12:22:13 - Total execution time: 1735.77 seconds
+2025-03-15 12:22:13 - ==================================================

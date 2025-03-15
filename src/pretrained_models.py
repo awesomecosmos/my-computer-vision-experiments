@@ -149,7 +149,7 @@ for model_name in lst_of_models:
             'model_name':model_name,
             'pretrained_model':flag,
             'batchSize':64,
-            'n_epochs':1,
+            'n_epochs':10,
             'optimizer':'Adam',
             'lr':0.001
         }
