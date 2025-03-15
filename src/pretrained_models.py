@@ -142,11 +142,11 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 lst_of_models = ['ResNet50']
 pretrained = [False, True]
 
-for model in lst_of_models:
+for model_name in lst_of_models:
     for flag in pretrained:
         logger.info("Starting new experiment!")   
         hyperparameters = {
-            'model_name':str(model),
+            'model_name':model_name,
             'pretrained_model':flag,
             'batchSize':64,
             'n_epochs':1,
