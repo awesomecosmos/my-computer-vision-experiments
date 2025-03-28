@@ -143,8 +143,8 @@ transform = transforms.Compose([
 train_dataset = torchvision.datasets.FashionMNIST(root='../data/', train=True, transform=transform, download=True)
 test_dataset = torchvision.datasets.FashionMNIST(root='../data/', train=False, transform=transform, download=True)
 
-train_loader = DataLoader(train_dataset, batch_size=1024, shuffle=True, pin_memory=True)
-test_loader = DataLoader(test_dataset, batch_size=1024, shuffle=False, pin_memory=True)
+train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True, pin_memory=True)
+test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, pin_memory=True)
 
 # setting experiment hyperparameters
 lst_of_models = ['ResNet50']
@@ -156,7 +156,7 @@ for model_name in lst_of_models:
         hyperparameters = {
             'model_name':model_name,
             'pretrained_model':flag,
-            'batchSize':1024,
+            'batchSize':64,
             'n_epochs':10,
             'optimizer':'Adam',
             'lr':0.001
