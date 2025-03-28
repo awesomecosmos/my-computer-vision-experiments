@@ -22,7 +22,9 @@ import utils
 
 
 def train_model(model, train_loader, criterion, hyperparameters):
+    saveDirResults = f"../data/results/{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}.pkl"
     losses, accuracies = [], []
+    model = model.to(device)
     model.train()
 
     for epoch in range(hyperparameters['n_epochs']):
@@ -56,6 +58,12 @@ def train_model(model, train_loader, criterion, hyperparameters):
 
         logger.info(f"Epoch {epoch+1}/{hyperparameters['n_epochs']}, Loss: {epoch_loss:.4f}, Accuracy: {100*epoch_accuracy:.4f}%")
     
+    # saving numerical results
+    numerical_results = {
+            "losses": losses,
+            "accuracies": accuracies
+        }
+    
     utils.plot_loss_accuracy_curves(
         losses, accuracies, 
         saveTag=f"train_{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}", 
@@ -63,6 +71,7 @@ def train_model(model, train_loader, criterion, hyperparameters):
         )
 
 def test_model(model, test_loader):
+    model = model.to(device)
     model.eval()
     correct = 0
     total = 0
@@ -83,7 +92,8 @@ def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
             model = resnet50(weights='DEFAULT')
         else:   
             model = resnet50(weights=None)
-    
+    model = model.to(device)
+
     # Modify the final fully connected layer for 10 classes
     model.fc = nn.Linear(model.fc.in_features, 10)  
 
@@ -93,7 +103,6 @@ def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
     for param in model.fc.parameters():
         param.requires_grad = True  # Unfreeze final layer
 
-    model.to(device)
     criterion = nn.CrossEntropyLoss()
 
     logger.info(f"Training model: ({hyperparameters['model_name']}, pretrained={hyperparameters['pretrained_model']})")
@@ -122,7 +131,6 @@ if (torch.cuda.is_available()):
     print('CUDA Device Name:',torch.cuda.get_device_name(0))
     logger.info(f'CUDA Device Total Memory [GB]:{torch.cuda.get_device_properties(0).total_memory/1e9}')
 
-
 # Transform: Resize to 224x224 (ResNet expects this) and repeat channels
 transform = transforms.Compose([
     transforms.Resize((224, 224)),  # ResNet expects 224x224 images
@@ -135,8 +143,8 @@ transform = transforms.Compose([
 train_dataset = torchvision.datasets.FashionMNIST(root='../data/', train=True, transform=transform, download=True)
 test_dataset = torchvision.datasets.FashionMNIST(root='../data/', train=False, transform=transform, download=True)
 
-train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
+train_loader = DataLoader(train_dataset, batch_size=1024, shuffle=True, pin_memory=True)
+test_loader = DataLoader(test_dataset, batch_size=1024, shuffle=False, pin_memory=True)
 
 # setting experiment hyperparameters
 lst_of_models = ['ResNet50']
@@ -148,7 +156,7 @@ for model_name in lst_of_models:
         hyperparameters = {
             'model_name':model_name,
             'pretrained_model':flag,
-            'batchSize':64,
+            'batchSize':1024,
             'n_epochs':10,
             'optimizer':'Adam',
             'lr':0.001
