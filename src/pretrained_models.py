@@ -15,14 +15,24 @@ import numpy as np
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
 import logging
+import pickle
 
 import utils
 
 ################################################################################
 
-
 def train_model(model, train_loader, criterion, hyperparameters):
-    saveDirResults = f"../data/results/{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}.pkl"
+    """Module to train model.
+
+    Args:
+        model (torch.nn.Module): Initialized model.
+        train_loader (torch.utils.data.DataLoader): Dataloader for training.
+        criterion (torch.nn.Module): Chosen loss function (initialized).
+        hyperparameters (dict): Dictionary of hyperparameters.
+
+    Returns:
+        dict: Dictionary of numerical results from training.
+    """
     losses, accuracies = [], []
     model = model.to(device)
     model.train()
@@ -69,14 +79,23 @@ def train_model(model, train_loader, criterion, hyperparameters):
             "losses": losses,
             "accuracies": accuracies
         }
-    
     utils.plot_loss_accuracy_curves(
         losses, accuracies, 
-        saveTag=f"train_{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}", 
+        saveTag=f"train_{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}_finetuning{hyperparameters['finetuning']}_optim{hyperparameters['optimizer']}", 
         figSaveDir=f"../figs/pretrained_experiments/"
         )
+    return numerical_results
 
 def test_model(model, test_loader):
+    """Module to test model.
+
+    Args:
+        model (torch.nn.Module): Initialized model.
+        test_loader (torch.utils.data.DataLoader): Dataloader for testing.
+
+    Returns:
+        float: Test accuracy.
+    """
     model = model.to(device)
     model.eval()
     correct = 0
@@ -90,9 +109,21 @@ def test_model(model, test_loader):
             correct += (predicted == labels).sum().item()
 
     logger.info(f"Test Accuracy: {100 * correct / total:.2f}%")
-    # add cm
+    return 100 * correct / total
     
 def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
+    """Wrapper function to run pretrained model experiments.
+
+    Args:
+        train_loader (torch.utils.data.DataLoader): Dataloader for training.
+        test_loader (torch.utils.data.DataLoader): Dataloader for testing.
+        hyperparameters (dict): Dictionary of hyperparameters.
+
+    Returns:
+        model (torch.nn.Module): Trained model.
+    """
+    saveDirResults = f"../data/results/{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}_finetuning{hyperparameters['finetuning']}_optim{hyperparameters['optimizer']}.pkl"
+    
     if hyperparameters['model_name'] == 'ResNet50':
         if hyperparameters['pretrained_model']:
             model = resnet50(weights='DEFAULT')
@@ -115,9 +146,16 @@ def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
 
     criterion = nn.CrossEntropyLoss()
 
-    logger.info(f"Training model: ({hyperparameters['model_name']}, pretrained={hyperparameters['pretrained_model']})")
-    train_model(model, train_loader, criterion, hyperparameters)
-    test_model(model, test_loader)
+    logger.info(f"Training model: ({hyperparameters['model_name']}, pretrained={hyperparameters['pretrained_model']}, finetuning={hyperparameters['finetuning']}, optimizer={hyperparameters['optimizer']})")
+    train_numerical_results = train_model(model, train_loader, criterion, hyperparameters)
+    test_numerical_results = test_model(model, test_loader)
+
+    with open(saveDirResults, "wb") as f:
+        pickle.dump({
+            "train":train_numerical_results,
+            "test":test_numerical_results
+        }, f)
+        logger.info("Saved numerical results in pickle!")
 
     return model
 
@@ -172,7 +210,7 @@ for model_name in lst_of_models:
                     'pretrained_model':pretrained_flag,
                     'finetuning':finetune_flag,
                     'batchSize':64,
-                    'n_epochs':1,
+                    'n_epochs':2,
                     'optimizer':optim_name, # either of ['Adam','SGD']
                     'lr':0.001,
                     'momentum':0.9,

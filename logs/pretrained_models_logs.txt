@@ -875,3 +875,155 @@
 2025-03-31 14:17:37 - Script ended at: 2025-03-31 14:17:37
 2025-03-31 14:17:37 - Total execution time: 1357.24 seconds
 2025-03-31 14:17:37 - ==================================================
+2025-03-31 19:12:54 - ==================================================
+2025-03-31 19:12:54 - Running script: pretrained_models.py
+2025-03-31 19:12:54 - Script started at: 2025-03-31 19:12:54
+2025-03-31 19:12:54 - Using device: cuda
+2025-03-31 19:12:54 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 19:12:54 - Starting new experiment!
+2025-03-31 19:12:54 - Hyperparameters:
+2025-03-31 19:12:54 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:12:54 - Training model: (ResNet50, pretrained=False, finetuning=True, optimizer=Adam)
+2025-03-31 19:15:33 - Epoch 1/2, Loss: 2.4948, Accuracy: 19.3067%
+2025-03-31 19:18:13 - Epoch 2/2, Loss: 2.0491, Accuracy: 30.4483%
+2025-03-31 19:18:34 - Test Accuracy: 21.60%
+2025-03-31 19:18:34 - Saved numerical results in pickle!
+2025-03-31 19:18:56 - Starting new experiment!
+2025-03-31 19:18:56 - Hyperparameters:
+2025-03-31 19:18:56 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:18:56 - Training model: (ResNet50, pretrained=False, finetuning=True, optimizer=SGD)
+2025-03-31 19:21:22 - Epoch 1/2, Loss: 2.1931, Accuracy: 22.8217%
+2025-03-31 19:23:47 - Epoch 2/2, Loss: 2.0188, Accuracy: 37.4267%
+2025-03-31 19:24:06 - Test Accuracy: 42.37%
+2025-03-31 19:24:06 - Saved numerical results in pickle!
+2025-03-31 19:24:26 - Starting new experiment!
+2025-03-31 19:24:26 - Hyperparameters:
+2025-03-31 19:24:26 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:24:27 - Training model: (ResNet50, pretrained=False, finetuning=False, optimizer=Adam)
+2025-03-31 19:26:33 - Epoch 1/2, Loss: 2.4451, Accuracy: 20.8633%
+2025-03-31 19:28:41 - Epoch 2/2, Loss: 2.0029, Accuracy: 32.0017%
+2025-03-31 19:29:01 - Test Accuracy: 26.96%
+2025-03-31 19:29:01 - Saved numerical results in pickle!
+2025-03-31 19:29:21 - Starting new experiment!
+2025-03-31 19:29:21 - Hyperparameters:
+2025-03-31 19:29:21 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:29:22 - Training model: (ResNet50, pretrained=False, finetuning=False, optimizer=SGD)
+2025-03-31 19:31:23 - Epoch 1/2, Loss: 2.1829, Accuracy: 21.2400%
+2025-03-31 19:33:26 - Epoch 2/2, Loss: 2.0226, Accuracy: 33.5333%
+2025-03-31 19:33:46 - Test Accuracy: 43.48%
+2025-03-31 19:33:46 - Saved numerical results in pickle!
+2025-03-31 19:34:06 - Starting new experiment!
+2025-03-31 19:34:06 - Hyperparameters:
+2025-03-31 19:34:06 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:34:06 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-03-31 19:36:26 - Epoch 1/2, Loss: 0.7211, Accuracy: 76.9667%
+2025-03-31 19:38:45 - Epoch 2/2, Loss: 0.5021, Accuracy: 82.2650%
+2025-03-31 19:39:04 - Test Accuracy: 82.74%
+2025-03-31 19:39:04 - Saved numerical results in pickle!
+2025-03-31 19:39:23 - Starting new experiment!
+2025-03-31 19:39:23 - Hyperparameters:
+2025-03-31 19:39:23 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:39:23 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=SGD)
+2025-03-31 19:41:43 - Epoch 1/2, Loss: 2.1190, Accuracy: 41.8050%
+2025-03-31 19:43:58 - Epoch 2/2, Loss: 1.8255, Accuracy: 62.8317%
+2025-03-31 19:44:16 - Test Accuracy: 65.80%
+2025-03-31 19:44:16 - Saved numerical results in pickle!
+2025-03-31 19:44:36 - Starting new experiment!
+2025-03-31 19:44:36 - Hyperparameters:
+2025-03-31 19:44:36 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:44:36 - Training model: (ResNet50, pretrained=True, finetuning=False, optimizer=Adam)
+2025-03-31 19:46:33 - Epoch 1/2, Loss: 0.7257, Accuracy: 76.8333%
+2025-03-31 19:48:30 - Epoch 2/2, Loss: 0.5048, Accuracy: 82.2917%
+2025-03-31 19:48:48 - Test Accuracy: 82.76%
+2025-03-31 19:48:48 - Saved numerical results in pickle!
+2025-03-31 19:49:08 - Starting new experiment!
+2025-03-31 19:49:08 - Hyperparameters:
+2025-03-31 19:49:08 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 19:49:08 - Training model: (ResNet50, pretrained=True, finetuning=False, optimizer=SGD)
+2025-03-31 19:51:07 - Epoch 1/2, Loss: 2.0988, Accuracy: 45.3650%
+2025-03-31 19:53:33 - Epoch 2/2, Loss: 1.8106, Accuracy: 63.0817%
+2025-03-31 19:53:57 - Test Accuracy: 65.95%
+2025-03-31 19:53:57 - Saved numerical results in pickle!
+2025-03-31 19:54:25 - Script ended at: 2025-03-31 19:54:25
+2025-03-31 19:54:25 - Total execution time: 2491.47 seconds
+2025-03-31 19:54:25 - ==================================================
