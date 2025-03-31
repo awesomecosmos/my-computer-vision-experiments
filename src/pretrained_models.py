@@ -36,6 +36,12 @@ def train_model(model, train_loader, criterion, hyperparameters):
 
             if hyperparameters['optimizer'] == 'Adam':
                 optimizer = optim.Adam(model.fc.parameters(), lr=hyperparameters['lr'])
+            elif hyperparameters['optimizer'] == 'SGD':
+                optimizer = optim.SGD(model.fc.parameters(), 
+                                      lr=hyperparameters['lr'], 
+                                      momentum=hyperparameters['momentum'],
+                                      weight_decay=hyperparameters['weight_decay']
+                                      )
 
             optimizer.zero_grad()
             outputs = model(images)
@@ -88,7 +94,7 @@ def test_model(model, test_loader):
     
 def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
     if hyperparameters['model_name'] == 'ResNet50':
-        if hyperparameters['pretrained_model'] is True:
+        if hyperparameters['pretrained_model']:
             model = resnet50(weights='DEFAULT')
         else:   
             model = resnet50(weights=None)
@@ -100,6 +106,10 @@ def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
     # Freeze all layers except the final classifier
     for param in model.parameters():
         param.requires_grad = False  # Freeze convolutional layers
+    # Check if fine-tuning is enabled
+    if hyperparameters['finetuning']:  
+        for param in model.layer4.parameters():
+            param.requires_grad = True  # Unfreeze last residual block
     for param in model.fc.parameters():
         param.requires_grad = True  # Unfreeze final layer
 
@@ -149,27 +159,34 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, pin_memory=
 # setting experiment hyperparameters
 lst_of_models = ['ResNet50']
 pretrained = [False, True]
+whether_to_finetune = [True, False]
+optim_names = ['Adam','SGD']
 
 for model_name in lst_of_models:
-    for flag in pretrained:
-        logger.info("Starting new experiment!")   
-        hyperparameters = {
-            'model_name':model_name,
-            'pretrained_model':flag,
-            'batchSize':64,
-            'n_epochs':10,
-            'optimizer':'Adam',
-            'lr':0.001
-        }
-        logger.info("Hyperparameters:")
-        logger.info(json.dumps(hyperparameters, indent=4))  # Pretty-print dictionary
-        model = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
+    for pretrained_flag in pretrained:
+        for finetune_flag in whether_to_finetune:
+            for optim_name in optim_names:
+                logger.info("Starting new experiment!")   
+                hyperparameters = {
+                    'model_name':model_name,
+                    'pretrained_model':pretrained_flag,
+                    'finetuning':finetune_flag,
+                    'batchSize':64,
+                    'n_epochs':1,
+                    'optimizer':optim_name, # either of ['Adam','SGD']
+                    'lr':0.001,
+                    'momentum':0.9,
+                    'weight_decay':0.1
+                }
+                logger.info("Hyperparameters:")
+                logger.info(json.dumps(hyperparameters, indent=4))  # Pretty-print dictionary
+                model = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
 
-        # plotting
-        sample_image, _ = test_dataset[1]  # Get the first test image
-        figSaveTag = f'{hyperparameters['model_name']}-pretrained{hyperparameters['pretrained_model']}'
-        utils.visualize_feature_maps(model, device, sample_image, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments", layer_name="layer1")  # Change "layer1" to "layer2", "layer3" for deeper layers
-        utils.plot_confusion_matrix(model, device, test_loader, class_names=train_dataset.classes, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments")
+                # plotting
+                sample_image, _ = test_dataset[1]  # Get the first test image
+                figSaveTag = f'{hyperparameters['model_name']}-pretrained{hyperparameters['pretrained_model']}'
+                utils.visualize_feature_maps(model, device, sample_image, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments", layer_name="layer1")  # Change "layer1" to "layer2", "layer3" for deeper layers
+                utils.plot_confusion_matrix(model, device, test_loader, class_names=train_dataset.classes, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments")
 
 # Log script end time
 end_time = time.time()                                                                              

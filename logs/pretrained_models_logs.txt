@@ -639,3 +639,239 @@
 2025-03-28 13:26:09 - Script ended at: 2025-03-28 13:26:09
 2025-03-28 13:26:09 - Total execution time: 1793.50 seconds
 2025-03-28 13:26:09 - ==================================================
+2025-03-31 13:18:44 - ==================================================
+2025-03-31 13:18:44 - Running script: pretrained_models.py
+2025-03-31 13:18:44 - Script started at: 2025-03-31 13:18:44
+2025-03-31 13:18:44 - Using device: cuda
+2025-03-31 13:18:44 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 13:18:44 - Starting new experiment!
+2025-03-31 13:18:44 - Hyperparameters:
+2025-03-31 13:18:44 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": "finetuning",
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-31 13:18:44 - Training model: (ResNet50, pretrained=False)
+2025-03-31 13:21:18 - Epoch 1/1, Loss: 2.4583, Accuracy: 20.3450%
+2025-03-31 13:21:38 - Test Accuracy: 34.47%
+2025-03-31 13:21:59 - Starting new experiment!
+2025-03-31 13:21:59 - Hyperparameters:
+2025-03-31 13:21:59 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": "finetuning",
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-31 13:22:00 - Training model: (ResNet50, pretrained=True)
+2025-03-31 13:24:20 - Epoch 1/1, Loss: 0.7228, Accuracy: 76.9500%
+2025-03-31 13:24:38 - Test Accuracy: 81.69%
+2025-03-31 13:24:57 - Script ended at: 2025-03-31 13:24:57
+2025-03-31 13:24:57 - Total execution time: 373.68 seconds
+2025-03-31 13:24:57 - ==================================================
+2025-03-31 13:37:55 - ==================================================
+2025-03-31 13:37:55 - Running script: pretrained_models.py
+2025-03-31 13:37:55 - Script started at: 2025-03-31 13:37:55
+2025-03-31 13:37:55 - Using device: cuda
+2025-03-31 13:37:55 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 13:37:55 - Starting new experiment!
+2025-03-31 13:37:55 - Hyperparameters:
+2025-03-31 13:37:55 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-31 13:37:55 - Training model: (ResNet50, pretrained=False)
+2025-03-31 13:40:28 - Epoch 1/1, Loss: 2.4387, Accuracy: 20.8183%
+2025-03-31 13:40:49 - Test Accuracy: 20.20%
+2025-03-31 13:41:09 - Starting new experiment!
+2025-03-31 13:41:09 - Hyperparameters:
+2025-03-31 13:41:09 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-31 13:41:09 - Training model: (ResNet50, pretrained=False)
+2025-03-31 13:43:22 - Epoch 1/1, Loss: 2.3674, Accuracy: 22.7767%
+2025-03-31 13:43:44 - Test Accuracy: 32.56%
+2025-03-31 13:44:06 - Starting new experiment!
+2025-03-31 13:44:06 - Hyperparameters:
+2025-03-31 13:44:06 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-31 13:44:06 - Training model: (ResNet50, pretrained=True)
+2025-03-31 13:46:27 - Epoch 1/1, Loss: 0.7223, Accuracy: 76.9733%
+2025-03-31 13:46:46 - Test Accuracy: 81.37%
+2025-03-31 13:47:05 - Starting new experiment!
+2025-03-31 13:47:05 - Hyperparameters:
+2025-03-31 13:47:05 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
+2025-03-31 13:47:05 - Training model: (ResNet50, pretrained=True)
+2025-03-31 13:49:06 - Epoch 1/1, Loss: 0.7227, Accuracy: 76.8250%
+2025-03-31 13:49:24 - Test Accuracy: 81.39%
+2025-03-31 13:49:43 - Script ended at: 2025-03-31 13:49:43
+2025-03-31 13:49:43 - Total execution time: 708.51 seconds
+2025-03-31 13:49:43 - ==================================================
+2025-03-31 13:55:00 - ==================================================
+2025-03-31 13:55:00 - Running script: pretrained_models.py
+2025-03-31 13:55:00 - Script started at: 2025-03-31 13:55:00
+2025-03-31 13:55:00 - Using device: cuda
+2025-03-31 13:55:00 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 13:55:00 - Starting new experiment!
+2025-03-31 13:55:00 - Hyperparameters:
+2025-03-31 13:55:00 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 13:55:00 - Training model: (ResNet50, pretrained=False)
+2025-03-31 13:57:29 - Epoch 1/1, Loss: 2.4444, Accuracy: 20.4567%
+2025-03-31 13:57:49 - Test Accuracy: 16.57%
+2025-03-31 13:58:08 - Starting new experiment!
+2025-03-31 13:58:08 - Hyperparameters:
+2025-03-31 13:58:08 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 13:58:08 - Training model: (ResNet50, pretrained=False)
+2025-03-31 14:00:27 - Epoch 1/1, Loss: 2.1995, Accuracy: 22.6567%
+2025-03-31 14:00:47 - Test Accuracy: 32.01%
+2025-03-31 14:01:06 - Starting new experiment!
+2025-03-31 14:01:06 - Hyperparameters:
+2025-03-31 14:01:06 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 14:01:07 - Training model: (ResNet50, pretrained=False)
+2025-03-31 14:03:08 - Epoch 1/1, Loss: 2.4338, Accuracy: 21.1150%
+2025-03-31 14:03:28 - Test Accuracy: 18.12%
+2025-03-31 14:03:48 - Starting new experiment!
+2025-03-31 14:03:48 - Hyperparameters:
+2025-03-31 14:03:48 - {
+    "model_name": "ResNet50",
+    "pretrained_model": false,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 14:03:48 - Training model: (ResNet50, pretrained=False)
+2025-03-31 14:05:45 - Epoch 1/1, Loss: 2.1618, Accuracy: 22.5650%
+2025-03-31 14:06:03 - Test Accuracy: 29.65%
+2025-03-31 14:06:22 - Starting new experiment!
+2025-03-31 14:06:22 - Hyperparameters:
+2025-03-31 14:06:22 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 14:06:22 - Training model: (ResNet50, pretrained=True)
+2025-03-31 14:08:47 - Epoch 1/1, Loss: 0.7251, Accuracy: 76.7450%
+2025-03-31 14:09:07 - Test Accuracy: 81.39%
+2025-03-31 14:09:26 - Starting new experiment!
+2025-03-31 14:09:26 - Hyperparameters:
+2025-03-31 14:09:26 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 14:09:26 - Training model: (ResNet50, pretrained=True)
+2025-03-31 14:11:48 - Epoch 1/1, Loss: 2.1166, Accuracy: 42.8083%
+2025-03-31 14:12:07 - Test Accuracy: 60.68%
+2025-03-31 14:12:26 - Starting new experiment!
+2025-03-31 14:12:26 - Hyperparameters:
+2025-03-31 14:12:26 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 14:12:26 - Training model: (ResNet50, pretrained=True)
+2025-03-31 14:14:30 - Epoch 1/1, Loss: 0.7259, Accuracy: 76.8000%
+2025-03-31 14:14:48 - Test Accuracy: 81.50%
+2025-03-31 14:15:06 - Starting new experiment!
+2025-03-31 14:15:06 - Hyperparameters:
+2025-03-31 14:15:06 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 1,
+    "optimizer": "SGD",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 14:15:06 - Training model: (ResNet50, pretrained=True)
+2025-03-31 14:16:58 - Epoch 1/1, Loss: 2.1063, Accuracy: 42.5933%
+2025-03-31 14:17:18 - Test Accuracy: 59.56%
+2025-03-31 14:17:37 - Script ended at: 2025-03-31 14:17:37
+2025-03-31 14:17:37 - Total execution time: 1357.24 seconds
+2025-03-31 14:17:37 - ==================================================
