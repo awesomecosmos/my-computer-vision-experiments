@@ -237,5 +237,63 @@ def visualize_feature_maps(model, device, image, figSaveTag, figSaveDir, layer_n
         ax.imshow(activation[0, i].cpu().numpy(), cmap="viridis")
         ax.axis("off")
     plt.suptitle(f"Feature Maps from {layer_name}: {figSaveTag}")
-    plt.savefig(f"{figSaveDir}/fm_{layer_name}_{figSaveTag}.jpg",dpi=300)
+    plt.savefig(f"{figSaveDir}/fm_{layer_name}_{figSaveTag}.jpg",dpi=900)
     plt.show()
+
+def collate_results_into_pandas(results_list, hyperparameters, train_numerical_results, test_numerical_results):
+    # Extract training results
+    avg_train_loss = np.mean(train_numerical_results['losses'])
+    avg_train_acc = np.mean(train_numerical_results['accuracies'])
+    test_acc = test_numerical_results
+
+    # Store in results list
+    results_list.append({
+        'Model': hyperparameters['model_name'],
+        'Pretrained': hyperparameters['pretrained_model'],
+        'Finetuning': hyperparameters['finetuning'],
+        'Optimizer': hyperparameters['optimizer'],
+        'Learning Rate': hyperparameters['lr'],
+        'Momentum': hyperparameters['momentum'],
+        'Weight Decay': hyperparameters['weight_decay'],
+        'Batch Size': hyperparameters['batchSize'],
+        'Epochs': hyperparameters['n_epochs'],
+        'Avg Train Loss': avg_train_loss,
+        'Avg Train Accuracy': avg_train_acc,
+        'Test Accuracy': test_acc
+    })
+    return results_list
+
+def plot_random_predictions(model, test_loader, device, class_names, figSaveTag, figSaveDir, num_images=10):
+    """Plots random test images with their actual and predicted labels.
+
+    Args:
+        model (torch.nn.Module): Trained model.
+        test_loader (torch.utils.data.DataLoader): Dataloader for testing.
+        device (torch.device): Device (CPU/GPU).
+        class_names (list): List of class names.
+        num_images (int): Number of images to display.
+    """
+    model.eval()
+    images, labels = next(iter(test_loader))
+    images, labels = images.to(device), labels.to(device)
+
+    # Select random indices
+    indices = torch.randperm(images.size(0))[:num_images]
+    images, labels = images[indices], labels[indices]
+
+    with torch.no_grad():
+        outputs = model(images)
+        _, preds = torch.max(outputs, 1)  # Get predicted classes
+
+    # Plot images
+    fig, axes = plt.subplots(2, 5, figsize=(12, 5))
+    axes = axes.flatten()
+    for i in range(num_images):
+        img = images[i].cpu().squeeze().permute(1, 2, 0)  # Move channels to last dimension
+        axes[i].imshow(img, cmap='gray')
+        axes[i].set_title(f"Actual: {class_names[labels[i]]}\nPred: {class_names[preds[i]]}", fontsize=10)
+        axes[i].axis('off')
+
+    plt.tight_layout()
+    # plt.title(f"Actual vs Predicted Labels: {figSaveTag}")
+    plt.savefig(f"{figSaveDir}/actual_vs_pred_examples_{figSaveTag}.jpg",dpi=300)

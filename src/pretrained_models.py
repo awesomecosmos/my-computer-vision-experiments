@@ -10,6 +10,7 @@ import os
 import json
 import sys
 from datetime import datetime
+import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -111,18 +112,19 @@ def test_model(model, test_loader):
     logger.info(f"Test Accuracy: {100 * correct / total:.2f}%")
     return 100 * correct / total
     
-def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
+def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters, results_list):
     """Wrapper function to run pretrained model experiments.
 
     Args:
         train_loader (torch.utils.data.DataLoader): Dataloader for training.
         test_loader (torch.utils.data.DataLoader): Dataloader for testing.
         hyperparameters (dict): Dictionary of hyperparameters.
+        results_list (list): List of results to append to.
 
     Returns:
         model (torch.nn.Module): Trained model.
     """
-    saveDirResults = f"../data/results/{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}_finetuning{hyperparameters['finetuning']}_optim{hyperparameters['optimizer']}.pkl"
+    saveDirResults = f"../data/results/pretrained_experiments/{hyperparameters['model_name']}_pretrained{hyperparameters['pretrained_model']}_finetuning{hyperparameters['finetuning']}_optim{hyperparameters['optimizer']}.pkl"
     
     if hyperparameters['model_name'] == 'ResNet50':
         if hyperparameters['pretrained_model']:
@@ -150,14 +152,16 @@ def run_pretrained_model_experiment(train_loader, test_loader, hyperparameters):
     train_numerical_results = train_model(model, train_loader, criterion, hyperparameters)
     test_numerical_results = test_model(model, test_loader)
 
+    # saving numerical results
     with open(saveDirResults, "wb") as f:
         pickle.dump({
             "train":train_numerical_results,
             "test":test_numerical_results
         }, f)
         logger.info("Saved numerical results in pickle!")
+    results_list = utils.collate_results_into_pandas(results_list, hyperparameters, train_numerical_results, test_numerical_results)
 
-    return model
+    return model, results_list
 
 ################################################################################
 
@@ -194,17 +198,26 @@ test_dataset = torchvision.datasets.FashionMNIST(root='../data/', train=False, t
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True, pin_memory=True)
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, pin_memory=True)
 
-# setting experiment hyperparameters
+# initializing data collection
+results_list = []
+
+# # setting experiment hyperparameters
+# lst_of_models = ['ResNet50']
+# pretrained = [False, True]
+# whether_to_finetune = [True, False]
+# optim_names = ['Adam','SGD']
+
 lst_of_models = ['ResNet50']
-pretrained = [False, True]
-whether_to_finetune = [True, False]
-optim_names = ['Adam','SGD']
+pretrained = [ True]
+whether_to_finetune = [True]
+optim_names = ['Adam']
 
 for model_name in lst_of_models:
     for pretrained_flag in pretrained:
         for finetune_flag in whether_to_finetune:
             for optim_name in optim_names:
                 logger.info("Starting new experiment!")   
+
                 hyperparameters = {
                     'model_name':model_name,
                     'pretrained_model':pretrained_flag,
@@ -218,14 +231,21 @@ for model_name in lst_of_models:
                 }
                 logger.info("Hyperparameters:")
                 logger.info(json.dumps(hyperparameters, indent=4))  # Pretty-print dictionary
-                model = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters)
+                model, results_list = run_pretrained_model_experiment(train_loader, test_loader, hyperparameters, results_list)
 
-                # plotting
+                # plotting, storing results
                 sample_image, _ = test_dataset[1]  # Get the first test image
-                figSaveTag = f'{hyperparameters['model_name']}-pretrained{hyperparameters['pretrained_model']}'
+                figSaveTag = f'{hyperparameters['model_name']}-pretrained{hyperparameters['pretrained_model']}-finetuning{hyperparameters['finetuning']}-optim{hyperparameters['optimizer']}'
                 utils.visualize_feature_maps(model, device, sample_image, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments", layer_name="layer1")  # Change "layer1" to "layer2", "layer3" for deeper layers
                 utils.plot_confusion_matrix(model, device, test_loader, class_names=train_dataset.classes, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments")
+                utils.plot_random_predictions(model, test_loader, device, train_dataset.classes, figSaveTag=figSaveTag, figSaveDir="../figs/pretrained_experiments", num_images=10)
+                
 
+# saving numerical results
+# results_df = pd.DataFrame(results_list)
+with open("../data/results/pretrained_experiments/all_results.pkl", "wb") as f:
+    pickle.dump(results_list, f)
+    logger.info("Saved numerical results in pickle!")
 # Log script end time
 end_time = time.time()                                                                              
 end_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

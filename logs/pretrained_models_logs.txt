@@ -1027,3 +1027,133 @@
 2025-03-31 19:54:25 - Script ended at: 2025-03-31 19:54:25
 2025-03-31 19:54:25 - Total execution time: 2491.47 seconds
 2025-03-31 19:54:25 - ==================================================
+2025-03-31 20:16:31 - ==================================================
+2025-03-31 20:16:31 - Running script: pretrained_models.py
+2025-03-31 20:16:31 - Script started at: 2025-03-31 20:16:31
+2025-03-31 20:16:31 - Using device: cuda
+2025-03-31 20:16:31 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 20:16:31 - Starting new experiment!
+2025-03-31 20:16:31 - Hyperparameters:
+2025-03-31 20:16:31 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 20:16:32 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-03-31 20:19:08 - Epoch 1/2, Loss: 0.7227, Accuracy: 77.0250%
+2025-03-31 20:21:44 - Epoch 2/2, Loss: 0.5033, Accuracy: 82.3450%
+2025-03-31 20:22:05 - Test Accuracy: 81.46%
+2025-03-31 20:22:05 - Saved numerical results in pickle!
+2025-03-31 20:26:44 - ==================================================
+2025-03-31 20:26:44 - Running script: pretrained_models.py
+2025-03-31 20:26:44 - Script started at: 2025-03-31 20:26:44
+2025-03-31 20:26:44 - Using device: cuda
+2025-03-31 20:26:44 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 20:26:44 - Starting new experiment!
+2025-03-31 20:26:44 - Hyperparameters:
+2025-03-31 20:26:44 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 20:26:45 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-03-31 20:29:21 - ==================================================
+2025-03-31 20:29:21 - Running script: pretrained_models.py
+2025-03-31 20:29:21 - Script started at: 2025-03-31 20:29:21
+2025-03-31 20:29:21 - Using device: cuda
+2025-03-31 20:29:21 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 20:29:21 - Starting new experiment!
+2025-03-31 20:29:21 - Hyperparameters:
+2025-03-31 20:29:21 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 20:29:21 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-03-31 20:30:30 - ==================================================
+2025-03-31 20:30:30 - Running script: pretrained_models.py
+2025-03-31 20:30:30 - Script started at: 2025-03-31 20:30:30
+2025-03-31 20:30:30 - Using device: cuda
+2025-03-31 20:30:30 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 20:30:30 - Starting new experiment!
+2025-03-31 20:30:30 - Hyperparameters:
+2025-03-31 20:30:30 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 20:30:30 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-03-31 20:33:04 - Epoch 1/2, Loss: 0.7260, Accuracy: 76.8867%
+2025-03-31 20:35:40 - Epoch 2/2, Loss: 0.5000, Accuracy: 82.5583%
+2025-03-31 20:36:01 - Test Accuracy: 82.66%
+2025-03-31 20:36:01 - Saved numerical results in pickle!
+2025-03-31 20:38:09 - ==================================================
+2025-03-31 20:38:09 - Running script: pretrained_models.py
+2025-03-31 20:38:09 - Script started at: 2025-03-31 20:38:09
+2025-03-31 20:38:09 - Using device: cuda
+2025-03-31 20:38:09 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 20:38:09 - Starting new experiment!
+2025-03-31 20:38:09 - Hyperparameters:
+2025-03-31 20:38:09 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 20:38:10 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-03-31 20:38:33 - ==================================================
+2025-03-31 20:38:33 - Running script: pretrained_models.py
+2025-03-31 20:38:33 - Script started at: 2025-03-31 20:38:33
+2025-03-31 20:38:33 - Using device: cuda
+2025-03-31 20:38:33 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 20:38:33 - Starting new experiment!
+2025-03-31 20:38:33 - Hyperparameters:
+2025-03-31 20:38:33 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 20:38:34 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-03-31 20:41:09 - Epoch 1/2, Loss: 0.7218, Accuracy: 76.9633%
+2025-03-31 20:43:43 - Epoch 2/2, Loss: 0.5023, Accuracy: 82.4350%
+2025-03-31 20:44:03 - Test Accuracy: 83.02%
+2025-03-31 20:44:03 - Saved numerical results in pickle!
+2025-03-31 20:44:26 - Saved numerical results in pickle!
+2025-03-31 20:44:26 - Script ended at: 2025-03-31 20:44:26
+2025-03-31 20:44:26 - Total execution time: 352.97 seconds
+2025-03-31 20:44:26 - ==================================================
