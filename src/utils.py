@@ -220,8 +220,14 @@ def visualize_feature_maps(model, device, image, figSaveTag, figSaveDir, layer_n
         nonlocal activation
         activation = output.detach()
 
+    # Ensure layer exists
+    named_modules = dict(model.named_modules())
+    if layer_name not in named_modules:
+        raise ValueError(f"Layer '{layer_name}' not found. Available layers: {list(named_modules.keys())}")
+
     # Register hook on chosen layer
-    layer = dict(model.named_modules())[layer_name]
+    # layer = dict(model.named_modules())[layer_name]
+    layer = named_modules[layer_name]
     hook = layer.register_forward_hook(hook_fn)
 
     # Process a single image

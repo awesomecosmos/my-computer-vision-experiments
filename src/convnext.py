@@ -37,7 +37,7 @@ def train_model(model, train_loader, criterion, hyperparameters):
     losses, accuracies = [], []
     model = model.to(device)
     model.train()
-
+    logger.info("Starting training!")
     for epoch in range(hyperparameters['n_epochs']):
         running_loss = 0.0
         correct, total = 0, 0  
@@ -73,7 +73,7 @@ def train_model(model, train_loader, criterion, hyperparameters):
         accuracies.append(epoch_accuracy)
 
         logger.info(f"Epoch {epoch+1}/{hyperparameters['n_epochs']}, Loss: {epoch_loss:.4f}, Accuracy: {100*epoch_accuracy:.4f}%")
-    
+    print("Finished training!")
     numerical_results = {
             "losses": losses,
             "accuracies": accuracies
@@ -97,6 +97,7 @@ def test_model(model, test_loader):
     """
     model = model.to(device)
     model.eval()
+    logger.info("Testing model!")
     correct = 0
     total = 0
     with torch.no_grad():
@@ -189,10 +190,10 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, pin_memory=
 results_list = []
 
 # setting experiment hyperparameters
-lst_of_models = ['ConvNeXt-Tiny']
-pretrained = [True]
-whether_to_finetune = [False]
-optim_names = ['Adam']
+lst_of_models = ['ConvNeXt-Tiny', 'ConvNeXt-Base']
+pretrained = [True, False]
+whether_to_finetune = [True, False]
+optim_names = ['Adam', 'SGD']
 
 for model_name in lst_of_models:
     for pretrained_flag in pretrained:
@@ -205,7 +206,7 @@ for model_name in lst_of_models:
                     'pretrained_model': pretrained_flag,
                     'finetuning': finetune_flag,
                     'batchSize': 64,
-                    'n_epochs': 2,
+                    'n_epochs': 1,
                     'optimizer': optim_name,
                     'lr': 0.001,
                     'momentum': 0.9,
@@ -216,7 +217,8 @@ for model_name in lst_of_models:
                 # plotting, storing results
                 sample_image, _ = test_dataset[1]  # Get the first test image
                 figSaveTag = f'{hyperparameters['model_name']}-pretrained{hyperparameters['pretrained_model']}-finetuning{hyperparameters['finetuning']}-optim{hyperparameters['optimizer']}'
-                # utils.visualize_feature_maps(model, device, sample_image, figSaveTag=figSaveTag, figSaveDir="../figs/convnext_experiments", layer_name="layer1")  # Change "layer1" to "layer2", "layer3" for deeper layers
+                utils.visualize_feature_maps(model, device, sample_image, figSaveTag=figSaveTag, figSaveDir="../figs/convnext_experiments", layer_name="features.1.0.block.6")  # Change "layer1" to "layer2", "layer3" for deeper layers
+                utils.visualize_feature_maps(model, device, sample_image, figSaveTag=figSaveTag, figSaveDir="../figs/convnext_experiments", layer_name="features.7.2.block.6")  # Change "layer1" to "layer2", "layer3" for deeper layers
                 utils.plot_confusion_matrix(model, device, test_loader, class_names=train_dataset.classes, figSaveTag=figSaveTag, figSaveDir="../figs/convnext_experiments")
                 utils.plot_random_predictions(model, test_loader, device, train_dataset.classes, figSaveTag=figSaveTag, figSaveDir="../figs/convnext_experiments", num_images=10)
                 
