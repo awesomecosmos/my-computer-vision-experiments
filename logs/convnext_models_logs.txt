@@ -1,0 +1,88 @@
+2025-03-31 21:22:54 - Running script: convnext.py
+2025-03-31 21:22:54 - Script started at: 2025-03-31 21:22:54
+2025-03-31 21:22:54 - Using device: cuda
+2025-03-31 21:22:54 - Starting new experiment!
+2025-03-31 21:22:54 - {
+    "model_name": "ConvNeXt-Tiny",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 21:22:57 - Training model: (ConvNeXt-Tiny, pretrained=True, finetuning=False, optimizer=Adam)
+2025-03-31 21:25:37 - Epoch 1/2, Loss: 0.4304, Accuracy: 85.0867%
+2025-03-31 21:28:14 - Epoch 2/2, Loss: 0.3298, Accuracy: 88.3000%
+2025-03-31 21:28:57 - Running script: convnext.py
+2025-03-31 21:28:57 - Script started at: 2025-03-31 21:28:57
+2025-03-31 21:28:57 - Using device: cuda
+2025-03-31 21:28:57 - Starting new experiment!
+2025-03-31 21:28:57 - {
+    "model_name": "ConvNeXt-Tiny",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 21:28:58 - Training model: (ConvNeXt-Tiny, pretrained=True, finetuning=False, optimizer=Adam)
+2025-03-31 21:31:35 - Epoch 1/2, Loss: 0.4286, Accuracy: 85.2950%
+2025-03-31 21:34:11 - Epoch 2/2, Loss: 0.3316, Accuracy: 88.2833%
+2025-03-31 21:34:36 - Test Accuracy: 88.06%
+2025-03-31 21:34:36 - Saved numerical results in pickle!
+2025-03-31 21:34:36 - Saved numerical results in pickle!
+2025-03-31 21:34:36 - Total execution time: 339.41 seconds
+2025-03-31 21:40:04 - ==================================================
+2025-03-31 21:40:04 - Running script: convnext.py
+2025-03-31 21:40:04 - Script started at: 2025-03-31 21:40:04
+2025-03-31 21:40:04 - Using device: cuda
+2025-03-31 21:40:04 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 21:40:04 - Starting new experiment!
+2025-03-31 21:40:04 - {
+    "model_name": "ConvNeXt-Tiny",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 21:40:04 - Training model: (ConvNeXt-Tiny, pretrained=True, finetuning=False, optimizer=Adam)
+2025-03-31 21:42:40 - Epoch 1/2, Loss: 0.4329, Accuracy: 85.0667%
+2025-03-31 21:45:15 - Epoch 2/2, Loss: 0.3316, Accuracy: 88.2500%
+2025-03-31 21:45:40 - Test Accuracy: 88.17%
+2025-03-31 21:45:40 - Saved numerical results in pickle!
+2025-03-31 21:45:55 - ==================================================
+2025-03-31 21:45:55 - Running script: convnext.py
+2025-03-31 21:45:55 - Script started at: 2025-03-31 21:45:55
+2025-03-31 21:45:55 - Using device: cuda
+2025-03-31 21:45:55 - CUDA Device Total Memory [GB]:25.380061184
+2025-03-31 21:45:55 - Starting new experiment!
+2025-03-31 21:45:55 - {
+    "model_name": "ConvNeXt-Tiny",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-03-31 21:45:56 - Training model: (ConvNeXt-Tiny, pretrained=True, finetuning=False, optimizer=Adam)
+2025-03-31 21:48:33 - Epoch 1/2, Loss: 0.4285, Accuracy: 85.1183%
+2025-03-31 21:51:09 - Epoch 2/2, Loss: 0.3304, Accuracy: 88.2500%
+2025-03-31 21:51:34 - Test Accuracy: 88.29%
+2025-03-31 21:51:34 - Saved numerical results in pickle!
+2025-03-31 21:52:01 - Saved numerical results in pickle!
+2025-03-31 21:52:01 - Script ended at: 2025-03-31 21:52:01
+2025-03-31 21:52:01 - Total execution time: 365.81 seconds
+2025-03-31 21:52:01 - ==================================================
