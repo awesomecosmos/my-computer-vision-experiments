@@ -206,7 +206,7 @@ for model_name in lst_of_models:
                     'pretrained_model': pretrained_flag,
                     'finetuning': finetune_flag,
                     'batchSize': 64,
-                    'n_epochs': 1,
+                    'n_epochs': 10,
                     'optimizer': optim_name,
                     'lr': 0.001,
                     'momentum': 0.9,
