@@ -263,14 +263,50 @@ def collate_results_into_pandas(results_list, hyperparameters, train_numerical_r
     })
     return results_list
 
+# def plot_random_predictions(model, test_loader, device, class_names, figSaveTag, figSaveDir, num_images=10):
+#     """Plots random test images with their actual and predicted labels.
+
+#     Args:
+#         model (torch.nn.Module): Trained model.
+#         test_loader (torch.utils.data.DataLoader): Dataloader for testing.
+#         device (torch.device): Device (CPU/GPU).
+#         class_names (list): List of class names.
+#         num_images (int): Number of images to display.
+#     """
+#     model.eval()
+#     images, labels = next(iter(test_loader))
+#     images, labels = images.to(device), labels.to(device)
+
+#     # Select random indices
+#     indices = torch.randperm(images.size(0))[:num_images]
+#     images, labels = images[indices], labels[indices]
+
+#     with torch.no_grad():
+#         outputs = model(images)
+#         _, preds = torch.max(outputs, 1)  # Get predicted classes
+
+#     # Plot images
+#     fig, axes = plt.subplots(2, 5, figsize=(12, 5))
+#     axes = axes.flatten()
+#     for i in range(num_images):
+#         img = images[i].cpu().squeeze().permute(1, 2, 0)  # Move channels to last dimension
+#         axes[i].imshow(img, cmap='gray')
+#         axes[i].set_title(f"Actual: {class_names[labels[i]]}\nPred: {class_names[preds[i]]}", fontsize=10)
+#         axes[i].axis('off')
+
+#     plt.tight_layout()
+#     # plt.title(f"Actual vs Predicted Labels: {figSaveTag}")
+#     plt.savefig(f"{figSaveDir}/actual_vs_pred_examples_{figSaveTag}.jpg",dpi=300)
 def plot_random_predictions(model, test_loader, device, class_names, figSaveTag, figSaveDir, num_images=10):
-    """Plots random test images with their actual and predicted labels.
+    """Plots random test images with their actual and predicted labels after unnormalizing.
 
     Args:
         model (torch.nn.Module): Trained model.
         test_loader (torch.utils.data.DataLoader): Dataloader for testing.
         device (torch.device): Device (CPU/GPU).
         class_names (list): List of class names.
+        figSaveTag (str): Tag for saving the figure.
+        figSaveDir (str): Directory to save the figure.
         num_images (int): Number of images to display.
     """
     model.eval()
@@ -285,15 +321,18 @@ def plot_random_predictions(model, test_loader, device, class_names, figSaveTag,
         outputs = model(images)
         _, preds = torch.max(outputs, 1)  # Get predicted classes
 
+    # Unnormalize images
+    images = images * 0.5 + 0.5  # Reverse normalization
+
     # Plot images
     fig, axes = plt.subplots(2, 5, figsize=(12, 5))
     axes = axes.flatten()
     for i in range(num_images):
-        img = images[i].cpu().squeeze().permute(1, 2, 0)  # Move channels to last dimension
-        axes[i].imshow(img, cmap='gray')
+        img = images[i].cpu().permute(1, 2, 0).numpy()  # Convert to NumPy and move channels
+
+        axes[i].imshow(img)  # No need for cmap='gray' since we restored RGB
         axes[i].set_title(f"Actual: {class_names[labels[i]]}\nPred: {class_names[preds[i]]}", fontsize=10)
         axes[i].axis('off')
 
     plt.tight_layout()
-    # plt.title(f"Actual vs Predicted Labels: {figSaveTag}")
-    plt.savefig(f"{figSaveDir}/actual_vs_pred_examples_{figSaveTag}.jpg",dpi=300)
+    plt.savefig(f"{figSaveDir}/actual_vs_pred_examples_{figSaveTag}.jpg", dpi=300)

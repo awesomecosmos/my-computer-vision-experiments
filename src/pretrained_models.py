@@ -208,8 +208,8 @@ results_list = []
 # optim_names = ['Adam','SGD']
 
 lst_of_models = ['ResNet50']
-pretrained = [ True]
-whether_to_finetune = [True]
+pretrained = [True]
+whether_to_finetune = [True, False]
 optim_names = ['Adam']
 
 for model_name in lst_of_models:
