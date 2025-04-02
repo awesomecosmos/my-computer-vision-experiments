@@ -17,9 +17,11 @@ We define a dictionary of hyperparameters, with the following parameters and opt
 - `"momentum": 0.9`. Momentum for SGD optimizer.
 - `"weight_decay": 0.1`. Weight decay for SGD optimizer.
 
-We used the following combinations of model hyperparameters: `pretrained_model`, `finetuning`, `optimizer`, resulting in $2\times 2\times 2 = 8$ total models trained. On the NVIDIA A6000 GPU, training these 8 models took a cumulative X seconds (or ~X minutes).
+We used the following combinations of model hyperparameters: `pretrained_model`, `finetuning`, `optimizer`, resulting in $2\times 2\times 2 = 8$ total models trained. On the NVIDIA A6000 GPU, training these 8 models took a cumulative 7008.95 seconds (or ~2 hours).
 
 ## Results 
+- The highest test accuracy was for `pretrained_model=True`, `finetuning=True`, `optimizer=Adam` at 84.62%.
+- The lowest test accuracy was for `pretrained_model=False`, `finetuning=True`, `optimizer=Adam` at 43.45%.
 - Not using pretrained weights provides much worse performance than using pretrained weights, where we do not perform any additional finetuning.
 
 ## Conclusions
