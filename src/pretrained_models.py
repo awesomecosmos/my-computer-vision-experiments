@@ -223,7 +223,7 @@ for model_name in lst_of_models:
                     'pretrained_model':pretrained_flag,
                     'finetuning':finetune_flag,
                     'batchSize':64,
-                    'n_epochs':2,
+                    'n_epochs':10,
                     'optimizer':optim_name, # either of ['Adam','SGD']
                     'lr':0.001,
                     'momentum':0.9,

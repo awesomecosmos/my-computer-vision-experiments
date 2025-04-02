@@ -1247,3 +1247,105 @@
 2025-03-31 21:14:28 - Script ended at: 2025-03-31 21:14:28
 2025-03-31 21:14:28 - Total execution time: 637.34 seconds
 2025-03-31 21:14:28 - ==================================================
+2025-04-02 06:24:52 - ==================================================
+2025-04-02 06:24:52 - Running script: pretrained_models.py
+2025-04-02 06:24:52 - Script started at: 2025-04-02 06:24:52
+2025-04-02 06:24:52 - Using device: cuda
+2025-04-02 06:24:52 - CUDA Device Total Memory [GB]:50.936283136
+2025-04-02 06:24:52 - Starting new experiment!
+2025-04-02 06:24:52 - Hyperparameters:
+2025-04-02 06:24:52 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-04-02 06:24:52 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-04-02 06:26:31 - Epoch 1/2, Loss: 0.7239, Accuracy: 76.9667%
+2025-04-02 06:28:09 - Epoch 2/2, Loss: 0.5019, Accuracy: 82.4267%
+2025-04-02 06:28:22 - Test Accuracy: 82.87%
+2025-04-02 06:32:36 - ==================================================
+2025-04-02 06:32:36 - Running script: pretrained_models.py
+2025-04-02 06:32:36 - Script started at: 2025-04-02 06:32:36
+2025-04-02 06:32:36 - Using device: cuda
+2025-04-02 06:32:36 - CUDA Device Total Memory [GB]:50.936283136
+2025-04-02 06:32:36 - Starting new experiment!
+2025-04-02 06:32:36 - Hyperparameters:
+2025-04-02 06:32:36 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 2,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-04-02 06:32:37 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-04-02 06:33:43 - ==================================================
+2025-04-02 06:33:43 - Running script: pretrained_models.py
+2025-04-02 06:33:43 - Script started at: 2025-04-02 06:33:43
+2025-04-02 06:33:43 - Using device: cuda
+2025-04-02 06:33:43 - CUDA Device Total Memory [GB]:50.936283136
+2025-04-02 06:33:43 - Starting new experiment!
+2025-04-02 06:33:43 - Hyperparameters:
+2025-04-02 06:33:43 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": true,
+    "batchSize": 64,
+    "n_epochs": 10,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-04-02 06:33:44 - Training model: (ResNet50, pretrained=True, finetuning=True, optimizer=Adam)
+2025-04-02 06:35:23 - Epoch 1/10, Loss: 0.7264, Accuracy: 76.8683%
+2025-04-02 06:37:01 - Epoch 2/10, Loss: 0.5013, Accuracy: 82.5050%
+2025-04-02 06:38:40 - Epoch 3/10, Loss: 0.4728, Accuracy: 83.6867%
+2025-04-02 06:40:19 - Epoch 4/10, Loss: 0.4601, Accuracy: 84.3917%
+2025-04-02 06:41:58 - Epoch 5/10, Loss: 0.4546, Accuracy: 84.9067%
+2025-04-02 06:43:37 - Epoch 6/10, Loss: 0.4526, Accuracy: 85.2483%
+2025-04-02 06:45:16 - Epoch 7/10, Loss: 0.4580, Accuracy: 85.4867%
+2025-04-02 06:46:54 - Epoch 8/10, Loss: 0.4566, Accuracy: 85.6900%
+2025-04-02 06:48:33 - Epoch 9/10, Loss: 0.4591, Accuracy: 85.8133%
+2025-04-02 06:50:12 - Epoch 10/10, Loss: 0.4596, Accuracy: 85.9050%
+2025-04-02 06:50:25 - Test Accuracy: 84.04%
+2025-04-02 06:50:25 - Saved numerical results in pickle!
+2025-04-02 06:50:41 - Starting new experiment!
+2025-04-02 06:50:41 - Hyperparameters:
+2025-04-02 06:50:41 - {
+    "model_name": "ResNet50",
+    "pretrained_model": true,
+    "finetuning": false,
+    "batchSize": 64,
+    "n_epochs": 10,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.1
+}
+2025-04-02 06:50:41 - Training model: (ResNet50, pretrained=True, finetuning=False, optimizer=Adam)
+2025-04-02 06:52:00 - Epoch 1/10, Loss: 0.7203, Accuracy: 76.9600%
+2025-04-02 06:53:18 - Epoch 2/10, Loss: 0.4994, Accuracy: 82.4733%
+2025-04-02 06:54:37 - Epoch 3/10, Loss: 0.4716, Accuracy: 83.8500%
+2025-04-02 06:55:55 - Epoch 4/10, Loss: 0.4589, Accuracy: 84.4150%
+2025-04-02 06:57:14 - Epoch 5/10, Loss: 0.4554, Accuracy: 84.8783%
+2025-04-02 06:58:33 - Epoch 6/10, Loss: 0.4532, Accuracy: 85.1967%
+2025-04-02 06:59:51 - Epoch 7/10, Loss: 0.4520, Accuracy: 85.4867%
+2025-04-02 07:01:10 - Epoch 8/10, Loss: 0.4581, Accuracy: 85.6317%
+2025-04-02 07:02:28 - Epoch 9/10, Loss: 0.4584, Accuracy: 85.6783%
+2025-04-02 07:03:47 - Epoch 10/10, Loss: 0.4614, Accuracy: 85.9067%
+2025-04-02 07:03:59 - Test Accuracy: 84.17%
+2025-04-02 07:03:59 - Saved numerical results in pickle!
+2025-04-02 07:04:13 - Saved numerical results in pickle!
+2025-04-02 07:04:13 - Script ended at: 2025-04-02 07:04:13
+2025-04-02 07:04:13 - Total execution time: 1829.82 seconds
+2025-04-02 07:04:13 - ==================================================
