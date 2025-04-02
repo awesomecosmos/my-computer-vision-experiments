@@ -1554,3 +1554,15 @@
 2025-04-02 10:31:13 - Epoch 2/10, Loss: 1.8182, Accuracy: 63.4233%
 2025-04-02 10:32:32 - Epoch 3/10, Loss: 1.6321, Accuracy: 66.7850%
 2025-04-02 10:33:51 - Epoch 4/10, Loss: 1.5081, Accuracy: 68.7617%
+2025-04-02 10:35:10 - Epoch 5/10, Loss: 1.4209, Accuracy: 69.8817%
+2025-04-02 10:36:28 - Epoch 6/10, Loss: 1.3588, Accuracy: 70.8400%
+2025-04-02 10:37:47 - Epoch 7/10, Loss: 1.3111, Accuracy: 71.5800%
+2025-04-02 10:39:05 - Epoch 8/10, Loss: 1.2762, Accuracy: 72.1350%
+2025-04-02 10:40:24 - Epoch 9/10, Loss: 1.2503, Accuracy: 72.2317%
+2025-04-02 10:41:42 - Epoch 10/10, Loss: 1.2265, Accuracy: 72.8700%
+2025-04-02 10:41:55 - Test Accuracy: 73.25%
+2025-04-02 10:41:55 - Saved numerical results in pickle!
+2025-04-02 10:42:08 - Saved numerical results in pickle!
+2025-04-02 10:42:08 - Script ended at: 2025-04-02 10:42:08
+2025-04-02 10:42:08 - Total execution time: 7008.95 seconds
+2025-04-02 10:42:08 - ==================================================
