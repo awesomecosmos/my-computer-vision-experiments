@@ -20,8 +20,37 @@ We define a dictionary of hyperparameters, with the following parameters and opt
 We used the following combinations of model hyperparameters: `pretrained_model`, `finetuning`, `optimizer`, resulting in $2\times 2\times 2 = 8$ total models trained. On the NVIDIA A6000 GPU, training these 8 models took a cumulative 7008.95 seconds (or ~2 hours).
 
 ## Results 
-- The highest test accuracy was for `pretrained_model=True`, `finetuning=True`, `optimizer=Adam` at 84.62%.
-- The lowest test accuracy was for `pretrained_model=False`, `finetuning=True`, `optimizer=Adam` at 43.45%.
-- Not using pretrained weights provides much worse performance than using pretrained weights, where we do not perform any additional finetuning.
+
+**Table 1.** Results from all 8 experiments described above, sorted in descending order by *Test Accuracy*.
+
+| Pretrained   | Finetuning   | Optimizer   |   Avg Train Loss |   Avg Train Accuracy |   Test Accuracy |
+|:-------------|:-------------|:------------|-----------------:|---------------------:|----------------:|
+| True         | True         | Adam        |         0.489163 |             0.840053 |           84.62 |
+| True         | False        | Adam        |         0.488972 |             0.84032  |           84.37 |
+| True         | True         | SGD         |         1.49503  |             0.670385 |           73.38 |
+| True         | False        | SGD         |         1.49105  |             0.672567 |           73.25 |
+| False        | True         | SGD         |         1.78203  |             0.468215 |           54.02 |
+| False        | False        | SGD         |         1.76769  |             0.459962 |           53.97 |
+| False        | False        | Adam        |         1.69995  |             0.402492 |           43.86 |
+| False        | True         | Adam        |         1.70432  |             0.400813 |           43.45 |
+
+- Using pretrained weights always provides better performance than not using pretrained weights. 
+- The difference between finetuning and not is very minimal. 
+- The Adam optimizer provides better performance for models trained with pretrained weights, whereas for non-pretrained weight-trained models, SGD boosts performance.
+
+**Fig. 1.** Examples of actual vs predicted labels for 1 randomly-chosen example from each class, from model (`pretrained_model=True`, `finetuning=False`, `optimizer=SGD`).
+![Alt text](figs/actual_vs_pred_examples_ResNet50-pretrainedTrue-finetuningFalse-optimSGD%20copy.jpg)
+
+**Fig. 2.** Example of feature map from first convolutional layer of model (`pretrained_model=True`, `finetuning=False`, `optimizer=SGD`).
+![Alt text](figs/fm_layer1_ResNet50-pretrainedTrue-finetuningFalse-optimSGD.jpg)
+
+**Fig. 3.** Loss-accuracy curves during training of best model (`pretrained_model=True`, `finetuning=True`, `optimizer=Adam`).
+![Alt text](figs/loss_acc_train_ResNet50_pretrainedTrue_finetuningTrue_optimAdam.jpg)
+
+**Fig. 4.** Confusion matrices for the best-performing (left) and worst-performing model (right).
+<p align="center">
+    <img src="figs/cm_ResNet50-pretrainedTrue-finetuningTrue-optimAdam.jpg" alt="Image 2" width="45%">
+    <img src="figs/cm_ResNet50-pretrainedFalse-finetuningTrue-optimAdam.jpg" alt="Image 1" width="45%">
+</p>
 
 ## Conclusions

@@ -17,4 +17,4 @@ with open("../data/results/pretrained_experiments/all_results.pkl", "rb") as f:
     data = pickle.load(f)
 
 results_df = pd.DataFrame(data)
-print(results_df.head())
+print(results_df.drop(columns=["Model", "Learning Rate","Momentum","Weight Decay","Batch Size","Epochs"]).sort_values(by="Test Accuracy", ascending=False).to_markdown(index=False))
