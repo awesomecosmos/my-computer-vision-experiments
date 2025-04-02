@@ -201,16 +201,11 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, pin_memory=
 # initializing data collection
 results_list = []
 
-# # setting experiment hyperparameters
-# lst_of_models = ['ResNet50']
-# pretrained = [False, True]
-# whether_to_finetune = [True, False]
-# optim_names = ['Adam','SGD']
-
+# setting experiment hyperparameters
 lst_of_models = ['ResNet50']
-pretrained = [True]
+pretrained = [False, True]
 whether_to_finetune = [True, False]
-optim_names = ['Adam']
+optim_names = ['Adam','SGD']
 
 for model_name in lst_of_models:
     for pretrained_flag in pretrained:
